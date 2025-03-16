@@ -5,137 +5,222 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<style>
-body {
+  <style>
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
     }
     
-.page {
-  padding-top: 15px;
-  
-}
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
     
-.container {
-  display: flex;
-  padding-top: 150px;
-  justify-content: center;
-  
-}
-
-.topnav {
-  background-color: rgb(255, 255, 255);
-  width:25% !important;
-  margin:0px auto;
-  overflow: hidden;
-  border-top-left-radius:30px;
-  border-bottom-left-radius:30px; 
-  border-top-right-radius:30px;
-  border-bottom-right-radius:30px;  
-  box-shadow: 8px 8px 3px rgb(168, 173, 175);
-  border: 0.25px solid black;
-  text-align: center
-  
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  color: #000000;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 14px;
-  font-family: sans-serif;
-  display: inline-block;
-  
-  
-
-  
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #cac9c9;
-  color: black;
-}
-
-
-.left {
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
     
-    margin-left: 400px;
-    padding-right: 50px;
-    flex: 1;
-   
-}  
-
-.right {
-    margin-right: 400px;
-    width:350px;
-} 
-</style>
-<div class="page">
- 
-<div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a href="Andre_Mendez_Resume.pdf" target="_blank" >Resume</a>
-    <a href="AndreProjects.html" target="_blank">Projects</a>
-    <a href="AndreContact.html" target="_blank">Contact</a>
+    .topnav {
+      background-color: white;
+      border-radius: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 0.25px solid black;
+      text-align: center;
+      padding: 5px 0;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    
+    .topnav a {
+      color: #000000;
+      text-align: center;
+      padding: 12px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    
+    .topnav a:hover {
+      background-color: #cac9c9;
+      color: black;
+      border-radius: 20px;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .left {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .right {
+      flex: 1;
+      min-width: 0;
+      max-width: 350px;
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+    
+    p {
+      margin-bottom: 15px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+    
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+    
+    .profile-pic {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-info h3 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .profile-info p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+    
+    ul {
+      padding-left: 25px;
+      margin-top: 15px;
+    }
+    
+    ul li {
+      margin-bottom: 10px;
+      list-style-position: outside;
+    }
+    
+    .copyright {
+      color: #999;
+      font-size: 0.8rem;
+      margin-top: 30px;
+    }
+    
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      
+      .left, .right {
+        width: 100%;
+        text-align: center;
+        max-width: 100%;
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+      
+      .topnav {
+        width: 90%;
+      }
+      
+      .topnav a {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .topnav {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+      
+      .topnav a {
+        padding: 8px 0;
+        width: 100%;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="Andre_Mendez_Resume.pdf" target="_blank">Resume</a>
+      <a href="AndreProjects.html" target="_blank">Projects</a>
+      <a href="AndreContact.html" target="_blank">Contact</a>
+    </nav>
+    
+    <div class="container">
+      <div class="left">
+        <h1><b>Hi, I'm Andre!</b></h1>
+        <p>
+          I am a freshman at the University of Miami studying Software Engineering. I am particularly
+          interested in the field of Cybersecurity. My projected graduation year is 2028.
+        </p>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/andre-mendez--/" aria-label="LinkedIn Profile">
+            <img src="linkedin.png" width="25" height="25" alt="LinkedIn"/>
+          </a>
+          <a href="https://github.com/amend7" aria-label="GitHub Profile">
+            <img src="github.jpg" width="45" height="25" alt="GitHub"/>
+          </a>
+        </div>
+      </div>
+      
+      <div class="right">
+        <img src="andrepic.jpg" class="profile-pic" alt="Andre Mendez" />
+        <div class="profile-info">
+          <h3>Andre Mendez</h3>
+          <p>University of Miami '28 | Interested in Cybersecurity</p>
+        </div>
+        
+        <ul>
+          <li style="list-style-type: '🎓'">University of Miami</li>
+          <li style="list-style-type: '🗺️'">Miami, Florida</li>
+          <li style="list-style-type: '✉️'">andre@amendez.dev</li>
+          <li style="list-style-type: '✉️'">acm527@miami.edu</li>
+          <li style="list-style-type: '🔗'"><a href="Andre_Mendez_Resume.pdf">Resume</a></li>
+        </ul>
+        
+        <p class="copyright">© 2024 Andre Mendez. All Rights Reserved.</p>
+      </div>
+    </div>
   </div>
-<div class="container">
-    
-<div class="left">
-<h1 style="font-family:sans-serif" ><b>Hi, I'm Andre!</b></h1>
-
-<p style="font-family:sans-serif; line-height: 1.5">
-   I am a freshman at the University of Miami studying Software Engineering. I am particularly
-   interested in the field of Cybersecurity. My projected graduation year is 2028.
-</p>
-
-<p style="font-family:sans-serif; line-height: 1.5">
-   
-</p>
-
-<p style="font-family:sans-serif; line-height: 1.5">
-    
-</p>
-
-
-<a href="https://www.linkedin.com/in/andre-mendez--/">
-    <img src="linkedin.png" width="25" height="25"/>
-  </a>
-
-<a href="https://github.com/amend7">
-  <img src="github.jpg" width="45" height="25"/>
-</a>
-</div>
-
-<div class="right">
-<img src="andrepic.jpg" width="300" height="300" />
-<h3 style="font-family:sans-serif; line-height: 0.1">
-    Andre Mendez 
-</h3>
-
-<p style="font-family:sans-serif; line-height: 0.1; font-size: small;">
-   University of Miami '28| Interested in Cybersecurity<br>
-</p>
-<ul style="font-family:sans-serif; font-size: 14.5px; font-weight: bold; line-height: 2">
-    <li style="list-style-type: '🎓'">University of Miami</li>
-    <li style="list-style-type: '🗺️'">Miami, Florida</li>
-    <li style="list-style-type: '✉️'">andre@amendez.dev</li>
-    <li style="list-style-type: '✉️'">acm527@miami.edu</li>
-    <li style="list-style-type: '🔗'"><a href="Andre_Mendez_Resume.pdf">Resume</a></li>
-</ul>
-
-
-<p style="color: lightgrey; font-size: 14px">
-    © 2024 Andre Mendez. All Rights Reserved.
-</p>
-
-</div>
-</div>
-</div>
 </body>
 </html>
