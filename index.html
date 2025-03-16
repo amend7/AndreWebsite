@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Andre Mendez</title>
+  <title>Andre Mendez | Software Engineering Student</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Andre Mendez - Software Engineering Student at University of Miami specializing in Cybersecurity">
   <style>
+    :root {
+      --primary-color: #0b5394;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ffcc00;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --medium-gray: #e0e0e0;
+      --dark-gray: #666;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,10 +27,10 @@
     }
     
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      color: #333;
-      background-color: #f5f5f5;
+      color: var(--text-color);
+      background-color: var(--secondary-color);
     }
     
     .page {
@@ -25,202 +39,478 @@
       padding: 20px;
     }
     
+    header {
+      position: relative;
+      padding: 20px 0;
+    }
+    
     .topnav {
       background-color: white;
-      border-radius: 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border: 0.25px solid black;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--medium-gray);
       text-align: center;
-      padding: 5px 0;
-      margin: 20px auto;
+      padding: 8px 0;
+      margin: 0 auto 30px;
       max-width: 600px;
+      position: relative;
+      z-index: 10;
     }
     
     .topnav a {
-      color: #000000;
+      color: var(--text-color);
       text-align: center;
-      padding: 12px 16px;
+      padding: 12px 18px;
       text-decoration: none;
       font-size: 16px;
       display: inline-block;
-      transition: background-color 0.3s;
+      transition: var(--transition);
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    
+    .topnav a.active {
+      color: var(--primary-color);
+      font-weight: 700;
     }
     
     .topnav a:hover {
-      background-color: #cac9c9;
-      color: black;
-      border-radius: 20px;
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
     }
     
     .container {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
+      gap: 60px;
+      margin-top: 30px;
     }
     
     .left {
       flex: 1;
       min-width: 0;
+      padding: 30px;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      position: relative;
+    }
+    
+    .left::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100px;
+      background-color: var(--accent-color);
+      border-top-left-radius: var(--border-radius);
     }
     
     .right {
       flex: 1;
       min-width: 0;
-      max-width: 350px;
+      max-width: 380px;
+    }
+    
+    .accent-text {
+      color: var(--primary-color);
     }
     
     h1 {
       margin-bottom: 20px;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      line-height: 1.2;
+      position: relative;
+    }
+    
+    h1 span {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+      font-weight: normal;
+      margin-top: 8px;
     }
     
     p {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      color: var(--text-color);
+      font-size: 1.05rem;
     }
     
     .social-links {
       display: flex;
       gap: 15px;
-      margin-top: 20px;
+      margin-top: 25px;
     }
     
     .social-links a {
       display: inline-flex;
       align-items: center;
-      transition: transform 0.2s;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--light-gray);
+      border-radius: 50%;
+      transition: var(--transition);
     }
     
     .social-links a:hover {
       transform: scale(1.1);
+      background-color: var(--medium-gray);
+    }
+    
+    .social-icon {
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 25px 0;
+    }
+    
+    .skill-tag {
+      background-color: var(--light-gray);
+      color: var(--primary-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .profile-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+    
+    .profile-bg {
+      height: 80px;
+      background-color: var(--primary-color);
+      position: relative;
+    }
+    
+    .profile-pic-container {
+      position: relative;
+      text-align: center;
+      margin-top: -50px;
+      padding-bottom: 15px;
     }
     
     .profile-pic {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .profile-info {
+      padding: 0 20px 20px;
+      text-align: center;
     }
     
     .profile-info h3 {
-      margin-top: 15px;
       font-size: 1.4rem;
+      margin-bottom: 5px;
     }
     
     .profile-info p {
-      color: #666;
+      color: var(--dark-gray);
       font-size: 0.9rem;
-      margin-top: 5px;
+      margin-bottom: 15px;
     }
     
-    ul {
-      padding-left: 25px;
-      margin-top: 15px;
+    .contact-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 25px;
+      margin-bottom: 25px;
     }
     
-    ul li {
-      margin-bottom: 10px;
-      list-style-position: outside;
+    .contact-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--medium-gray);
     }
     
-    .copyright {
-      color: #999;
-      font-size: 0.8rem;
+    ul.contact-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul.contact-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      color: var(--text-color);
+    }
+    
+    ul.contact-list li span {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      min-width: 25px;
+      text-align: center;
+    }
+    
+    .progress-bars {
+      margin: 25px 0;
+    }
+    
+    .progress-item {
+      margin-bottom: 15px;
+    }
+    
+    .progress-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background-color: var(--medium-gray);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background-color: var(--primary-color);
+      border-radius: 4px;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      margin: 30px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      bottom: 5px;
+      width: 2px;
+      background-color: var(--medium-gray);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 25px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 2px solid white;
+    }
+    
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+      margin-bottom: 5px;
+    }
+    
+    .timeline-title {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .timeline-subtitle {
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+      margin-bottom: 5px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: #084582;
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 15px;
       margin-top: 30px;
     }
     
+    .copyright {
+      text-align: center;
+      color: var(--dark-gray);
+      font-size: 0.8rem;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--medium-gray);
+    }
+    
+    .scroll-down {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: var(--dark-gray);
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
     /* Responsive styles */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 900px) {
       .container {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
+        gap: 40px;
       }
       
       .left, .right {
         width: 100%;
-        text-align: center;
         max-width: 100%;
       }
       
-      .social-links {
-        justify-content: center;
-      }
-      
       .topnav {
-        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
       }
       
-      .topnav a {
-        padding: 10px 12px;
-        font-size: 14px;
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
       }
     }
     
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 600px) {
       .topnav {
-        display: flex;
         flex-direction: column;
         padding: 10px 0;
       }
       
       .topnav a {
-        padding: 8px 0;
+        padding: 12px 0;
         width: 100%;
+        border-radius: 0;
       }
       
       h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .left::before {
+        height: 60px;
+      }
+      
+      .social-links {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <nav class="topnav">
-      <a class="active" href="index.html">Home</a>
-      <a href="Andre_Mendez_Resume.pdf" target="_blank">Resume</a>
-      <a href="AndreProjects.html" target="_blank">Projects</a>
-      <a href="AndreContact.html" target="_blank">Contact</a>
-    </nav>
+    <header>
+      <nav class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="Andre_Mendez_Resume.pdf" target="_blank">Resume</a>
+        <a href="AndreProjects.html" target="_blank">Projects</a>
+        <a href="AndreContact.html" target="_blank">Contact</a>
+      </nav>
+    </header>
     
     <div class="container">
       <div class="left">
-        <h1><b>Hi, I'm Andre!</b></h1>
+        <h1>
+          Hi, I'm <span class="accent-text">Andre Mendez</span>
+          <span>Software Engineering Student</span>
+        </h1>
+        
         <p>
-          I am a freshman at the University of Miami studying Software Engineering. I am particularly
-          interested in the field of Cybersecurity. My projected graduation year is 2028.
+          I am a freshman at the University of Miami studying Software Engineering with a deep interest in Cybersecurity. My passion lies in developing secure solutions that protect digital infrastructures from emerging threats.
         </p>
+        <p>
+          Currently focused on building a strong foundation in programming fundamentals, network security principles, and ethical hacking methodologies. I'm excited to apply these skills to real-world cybersecurity challenges.
+        </p>
+        
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Network Security</span>
+          <span class="skill-tag">Linux</span>
+        </div>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2024 - Present</div>
+            <div class="timeline-title">University of Miami</div>
+            <div class="timeline-subtitle">B.S. in Software Engineering</div>
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <a href="Andre_Mendez_Resume.pdf" class="btn" target="_blank">Download Resume</a>
+          <a href="AndreContact.html" class="btn btn-outline">Get In Touch</a>
+        </div>
         
         <div class="social-links">
           <a href="https://www.linkedin.com/in/andre-mendez--/" aria-label="LinkedIn Profile">
-            <img src="linkedin.png" width="25" height="25" alt="LinkedIn"/>
+            <img src="linkedin.png" width="22" height="22" alt="LinkedIn" class="social-icon"/>
           </a>
-          <a href="https://github.com/amend7" aria-label="GitHub Profile">
-            <img src="github.jpg" width="45" height="25" alt="GitHub"/>
-          </a>
-        </div>
-      </div>
-      
-      <div class="right">
-        <img src="andrepic.jpg" class="profile-pic" alt="Andre Mendez" />
-        <div class="profile-info">
-          <h3>Andre Mendez</h3>
-          <p>University of Miami '28 | Interested in Cybersecurity</p>
-        </div>
-        
-        <ul>
-          <li style="list-style-type: '🎓'">University of Miami</li>
-          <li style="list-style-type: '🗺️'">Miami, Florida</li>
-          <li style="list-style-type: '✉️'">andre@amendez.dev</li>
-          <li style="list-style-type: '✉️'">acm527@miami.edu</li>
-          <li style="list-style-type: '🔗'"><a href="Andre_Mendez_Resume.pdf">Resume</a></li>
-        </ul>
-        
-        <p class="copyright">© 2024 Andre Mendez. All Rights Reserved.</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+          <a href="https://github.com/amend7" aria-
