@@ -1,18 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+  <title>Contact Andre Mendez | Software Engineering Student</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Andre Mendez - Software Engineering Student at University of Miami">
+  <style>
+    :root {
+      --primary-color: #0b5394;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ffcc00;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --medium-gray: #e0e0e0;
+      --dark-gray: #666;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--secondary-color);
+    }
+    
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      position: relative;
+      padding: 20px 0;
+    }
+    
+    .topnav {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--medium-gray);
+      text-align: center;
+      padding: 8px 0;
+      margin: 0 auto 30px;
+      max-width: 600px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .topnav a {
+      color: var(--text-color);
+      text-align: center;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+      transition: var(--transition);
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    
+    .topnav a.active {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    .topnav a:hover {
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    
+    .content-section {
+      flex: 2;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 40px;
+      position: relative;
+    }
+    
+    .content-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100px;
+      background-color: var(--accent-color);
+      border-top-left-radius: var(--border-radius);
+    }
+    
+    .sidebar {
+      flex: 1;
+      min-width: 0;
+      max-width: 380px;
+    }
+    
+    .accent-text {
+      color: var(--primary-color);
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      position: relative;
+    }
+    
+    h1 span {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--dark-gray);
+      font-weight: normal;
+      margin-top: 8px;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    
+    p {
+      margin-bottom: 20px;
+      color: var(--text-color);
+      font-size: 1.05rem;
+    }
+    
+    .contact-form {
+      margin-top: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+    
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--medium-gray);
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+      background-color: var(--light-gray);
+    }
+    
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(11, 83, 148, 0.2);
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: #084582;
+      transform: translateY(-2px);
+    }
+    
+    .contact-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    
+    .contact-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--medium-gray);
+      color: var(--primary-color);
+    }
+    
+    ul.contact-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul.contact-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+      color: var(--text-color);
+    }
+    
+    ul.contact-list li span {
+      margin-right: 15px;
+      font-size: 1.2rem;
+      width: 25px;
+      text-align: center;
+      color: var(--primary-color);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contact-info-label {
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+    
+    .contact-info-value {
+      font-size: 1rem;
+    }
+    
+    .contact-info-value a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .contact-info-value a:hover {
+      text-decoration: underline;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--light-gray);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      transform: scale(1.1);
+      background-color: var(--medium-gray);
+    }
+    
+    .social-icon {
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .map-container {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      height: 250px;
+      background-color: var(--light-gray);
+      margin-top: 30px;
+      position: relative;
+    }
+    
+    .map-placeholder {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-gray);
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+    
+    .faq-section {
+      margin-top: 40px;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--medium-gray);
+    }
+    
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    
+    .faq-answer {
+      color: var(--text-color);
+    }
+    
+    .copyright {
+      text-align: center;
+      color: var(--dark-gray);
+      font-size: 0.8rem;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--medium-gray);
+    }
+    
+    .emoji {
+      margin-right: 8px;
+    }
+    
+    /* Responsive styles */
+    @media screen and (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .sidebar {
+        max-width: 100%;
+      }
+      
+      .topnav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    
+    @media screen and (max-width: 600px) {
+      .topnav {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+      
+      .topnav a {
+        padding: 12px 0;
+        width: 100%;
+        border-radius: 0;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .content-section {
+        padding: 25px;
+      }
+      
+      .content-section::before {
+        height: 60px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>
-        Let's get in touch!
-    </h1>
-    <h3>
-        Thank you for your interest in getting in touch with me. I welcome your feedback, questions, and suggestions. 
-        If you have a specific question or comment, please feel free to email me directly at andre@amendez.dev or acm527@miami.edu.
-        I look forward to hearing from you!
-    </h3>
-</body>
-</html>
+  <div class="page">
+    <header>
+      <nav class="topnav">
+        <a href="index.html">Home</a>
+        <a href="Andre_Mendez_Resume.pdf" target="_blank">Resume</a>
+        <a href="AndreProjects.html" target="_blank">Projects</a>
+        <a class="active" href="AndreContact.html">Contact</a>
+      </nav>
+    </header>
+    
+    <div class="container">
+      <div class="content-section">
+        <h1>Let's Get In Touch <span>I'd love to hear from you</span></h1>
+        
+        <p>
+          Thank you for your interest in getting in touch with me. I welcome your feedback, questions, and suggestions about my projects, potential collaborations, or just to chat about software engineering and cybersecurity.
+        </p>
+        
+        <div class="contact-form">
+          <h2>Send Me a Message</h2>
+          <form action="#" method="POST" id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="general">General Inquiry</option>
+                <option value="project">Project Collaboration</option>
+                <option value="opportunity">Job/Internship Opportunity</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+        
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          
+          <div class="faq-item">
+            <div class="faq-question">What is your preferred method of contact?</div>
+            <div class="faq-answer">Email is the best way to reach me. I typically respond within 24-48 hours.</div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">Are you available for internships or part-time work?</div>
+            <div class="faq-answer">Yes, I'm currently looking for opportunities to gain practical experience in software engineering and cybersecurity while pursuing my degree.</div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">Can we collaborate on a project?</div>
+            <div class="faq-answer">I'm always open to collaboration opportunities, especially those related to cybersecurity, web development, or software engineering. Feel free to reach out with your ideas!</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar">
+        <div class="contact-card">
+          <h3>Contact Information</h3>
+          
+          <ul class="contact-list">
+            <li>
+              <span>📧</span>
+              <div class="contact-info">
+                <span class="contact-info-label">Email</span>
+                <span class="contact-info-value"><a href="mailto:andre@amendez.dev">andre@amendez.dev</a></span>
+              </div>
+            </li>
+            
+            <li>
+              <span>🎓</span>
+              <div class="contact-info">
+                <span class="contact-info-label">University Email</span>
+                <span class="contact-info-value"><a href="mailto:acm527@miami.edu">acm527@miami.edu</a></span>
+              </div>
+            </li>
+            
+            <li>
+              <span>📍</span>
+              <div class="contact-info">
+                <span class="contact-info-label">Location</span>
+                <span class="contact-info-value">University of Miami, Coral Gables, FL</span>
+              </div>
+            </li>
+            
+            <li>

@@ -1,16 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+  <title>Projects | Andre Mendez - Software Engineering Student</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of projects by Andre Mendez - Software Engineering Student at University of Miami">
+  <style>
+    :root {
+      --primary-color: #0b5394;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ffcc00;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --medium-gray: #e0e0e0;
+      --dark-gray: #666;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--secondary-color);
+    }
+    
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      position: relative;
+      padding: 20px 0;
+    }
+    
+    .topnav {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--medium-gray);
+      text-align: center;
+      padding: 8px 0;
+      margin: 0 auto 30px;
+      max-width: 600px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .topnav a {
+      color: var(--text-color);
+      text-align: center;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+      transition: var(--transition);
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    
+    .topnav a.active {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    .topnav a:hover {
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+    
+    .projects-header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .projects-header h1 {
+      font-size: 2.8rem;
+      color: var(--text-color);
+      margin-bottom: 10px;
+    }
+    
+    .projects-header p {
+      color: var(--dark-gray);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .header-accent {
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-color);
+      margin: 20px auto;
+    }
+    
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .filter-tab {
+      background-color: white;
+      border: 1px solid var(--medium-gray);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .filter-tab:hover {
+      background-color: var(--light-gray);
+    }
+    
+    .filter-tab.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .project-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-image {
+      height: 200px;
+      background-color: var(--medium-gray);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .project-tags {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      display: flex;
+      gap: 8px;
+    }
+    
+    .project-tag {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    
+    .project-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-title {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+    
+    .project-description {
+      color: var(--dark-gray);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .tech-badge {
+      background-color: var(--light-gray);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 15px;
+      margin-top: auto;
+    }
+    
+    .project-link {
+      display: inline-block;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .primary-link {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .primary-link:hover {
+      background-color: #084582;
+    }
+    
+    .secondary-link {
+      border: 1px solid var(--medium-gray);
+      color: var(--text-color);
+    }
+    
+    .secondary-link:hover {
+      background-color: var(--light-gray);
+    }
+    
+    .featured-project {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+    
+    .featured-project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .featured-image {
+      flex: 1;
+      min-width: 300px;
+      background-color: var(--medium-gray);
+      position: relative;
+    }
+    
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .featured-content {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .featured-tag {
+      color: var(--primary-color);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    
+    .featured-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    
+    .featured-description {
+      color: var(--dark-gray);
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+    
+    .more-projects {
+      text-align: center;
+      padding: 50px 0;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: #084582;
+      transform: translateY(-2px);
+    }
+    
+    .coming-soon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+    .project-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--light-gray);
+      padding: 30px;
+      text-align: center;
+      border-radius: var(--border-radius);
+    }
+    
+    .project-placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: var(--dark-gray);
+    }
+    
+    .project-placeholder-text {
+      color: var(--dark-gray);
+      font-weight: 500;
+    }
+    
+    .github-profile {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      text-align: center;
+      margin-top: 50px;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .github-profile h2 {
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+    
+    .github-profile p {
+      color: var(--dark-gray);
+      margin-bottom: 20px;
+    }
+    
+    .copyright {
+      text-align: center;
+      color: var(--dark-gray);
+      font-size: 0.8rem;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--medium-gray);
+    }
+    
+    /* Responsive styles */
+    @media screen and (max-width: 900px) {
+      .featured-project {
+        grid-column: span 1;
+        flex-direction: column;
+      }
+      
+      .featured-image {
+        height: 200px;
+      }
+      
+      .topnav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    
+    @media screen and (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .topnav {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+      
+      .topnav a {
+        padding: 12px 0;
+        width: 100%;
+        border-radius: 0;
+      }
+      
+      .projects-header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>
-       Projects
-    </h1>
-    <h2>
-        Here are some of my projects:
-    </h2>
-</body>
-</html>
+  <div class="page">
+    <header>
+      <nav class="topnav">
+        <a href="index.html">Home</a>
+        <a href="Andre_Mendez_Resume.pdf" target="_blank">Resume</a>
+        <a class="active" href="AndreProjects.html">Projects</a>
+        <a href="AndreContact.html">Contact</a>
+      </nav>
+    </header>
+    
+    <div class="projects-header">
+      <h1>My Projects</h1>
+      <div class="header-accent"></div>
+      <p>Here's a showcase of my work in software engineering and cybersecurity. These projects demonstrate my technical skills and passion for creating secure and efficient solutions.</p>
+    </div>
+    
+    <div class="filter-tabs">
+      <button class="filter-tab active">All</button>
+      <button class="filter-tab">Cybersecurity</button>
+      <button class="filter-tab">Web Development</button>
+      <button class="filter-tab">Programming</button>
+    </div>
+    
+    <div class="projects-grid">
+      <!-- Featured Project -->
+      <div class="featured-project">
+        <div class="featured-image">
+          <img src="/api/placeholder/600/400" alt="Python Keylogger Project" />
+          <div class="project-tags">
+            <span class="project-tag">Featured</span>
+            <span class="project-tag">Cybersecurity</span>
+          </div>
+        </div>
+        <div class="featured-content">
+          <div class="featured-tag">Cybersecurity Tool</div>
+          <h2 class="featured-title">Python Keylogger</h2>
+          <p class="featured-description">
+            Developed a keylogger application in Python for educational purposes to understand how monitoring software works and potential security vulnerabilities. The project demonstrates keyboard input capture, logging mechanisms, and basic data encryption techniques.
+          </p>
+          <div class="project-tech">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Pynput</span>
+            <span class="tech-badge">File I/O</span>
+            <span class="tech-badge">Encryption</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/amend7/python-keylogger" class="project-link primary-link" target="_blank">View Project</a>
+            <a href="#" class="project-link secondary-link" target="_blank">Demo</a>
